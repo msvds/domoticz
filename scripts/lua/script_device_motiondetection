@@ -29,11 +29,13 @@ local switches = {
     },
     Floor_1={
         detectors={
-            'Beweging kamer Lars',
-            'Balkondeur slaapkamer',
-            'Dakraam slaapkamer'
+            --'Beweging kamer Lars',
+            'Beweging hal boven',
+            --'Balkondeur slaapkamer',
+            --'Dakraam slaapkamer'
         },
         switches={
+            'Lamp hal boven'
         },
         timeout=5
     },
