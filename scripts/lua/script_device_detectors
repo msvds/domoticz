@@ -3,10 +3,13 @@ debug = true
 commandArray = {}
 MotionDeviceName1 = 'Beweging woonkamer'
 MotionDeviceName2 = 'Beweging kamer Lars'
+MotionDeviceName3 = 'Beweging hal boven'
 NoMotionCounterVar1 = 'Counter_NoMotion_LivingRoom'
 NoMotionCounterVar2 = 'Counter_NoMotion_RoomLars'
+NoMotionCounterVar3 = 'Counter_NoMotion_HalBoven'
 MotionCounterVar1 = 'Counter_Motion_LivingRoom'
 MotionCounterVar2 = 'Counter_Motion_RoomLars'
+MotionCounterVar3 = 'Counter_Motion_HalBoven'
 
 DoorWindowDeviceName1 = 'Eetkamerdeur'
 DoorWindowOpenCounterVar1 = 'Counter_Open_DiningRoomDoor'
@@ -20,6 +23,15 @@ DoorWindowClosedCounterVar3 = 'Counter_Closed_MasterBedroomBalkonyDoor'
 DoorWindowDeviceName4 = 'Zolderdakraam achter'
 DoorWindowOpenCounterVar4 = 'Counter_Open_RearAtticWindow'
 DoorWindowClosedCounterVar4 = 'Counter_Closed_RearAtticWindow'
+DoorWindowDeviceName5 = 'Slaapkamerdeur'
+DoorWindowOpenCounterVar5 = 'Counter_Open_Slaapkamerdeur'
+DoorWindowClosedCounterVar5 = 'Counter_Closed_Slaapkamerdeur'
+DoorWindowDeviceName6 = 'Balkondeur Nienke'
+DoorWindowOpenCounterVar6 = 'Counter_Open_BalkondeurNienke'
+DoorWindowClosedCounterVar6 = 'Counter_Closed_BalkondeurNienke'
+DoorWindowDeviceName7 = 'Voordeur'
+DoorWindowOpenCounterVar7 = 'Counter_Open_Voordeur'
+DoorWindowClosedCounterVar7 = 'Counter_Closed_Voordeur'
 
 -- Loop through all the changed devices sent by the trigger
 for deviceName,deviceValue in pairs(devicechanged) do
@@ -38,6 +50,14 @@ for deviceName,deviceValue in pairs(devicechanged) do
         elseif deviceValue == "Off" then
             --if debug then print('No motion started') end
             commandArray['Variable:' .. MotionCounterVar2] = tostring(0)
+        end
+    elseif (deviceName==MotionDeviceName3) then
+        if deviceValue == "On" then
+            --if debug then print('Motion detected') end
+            commandArray['Variable:' .. NoMotionCounterVar3] = tostring(0)
+        elseif deviceValue == "Off" then
+            --if debug then print('No motion started') end
+            commandArray['Variable:' .. MotionCounterVar3] = tostring(0)
         end
     elseif (deviceName==DoorWindowDeviceName1) then
         if deviceValue == "Open" then
@@ -70,6 +90,30 @@ for deviceName,deviceValue in pairs(devicechanged) do
         elseif deviceValue == "Closed" then
             --if debug then print('Closed door/window detected') end
             commandArray['Variable:' .. DoorWindowOpenCounterVar4] = tostring(0)
+        end
+    elseif (deviceName==DoorWindowDeviceName5) then
+        if deviceValue == "Open" then
+            --if debug then print('Open door/window detected') end
+            commandArray['Variable:' .. DoorWindowClosedCounterVar5] = tostring(0)
+        elseif deviceValue == "Closed" then
+            --if debug then print('Closed door/window detected') end
+            commandArray['Variable:' .. DoorWindowOpenCounterVar5] = tostring(0)
+        end
+    elseif (deviceName==DoorWindowDeviceName6) then
+        if deviceValue == "Open" then
+            --if debug then print('Open door/window detected') end
+            commandArray['Variable:' .. DoorWindowClosedCounterVar6] = tostring(0)
+        elseif deviceValue == "Closed" then
+            --if debug then print('Closed door/window detected') end
+            commandArray['Variable:' .. DoorWindowOpenCounterVar6] = tostring(0)
+        end
+    elseif (deviceName==DoorWindowDeviceName7) then
+        if deviceValue == "Open" then
+            --if debug then print('Open door/window detected') end
+            commandArray['Variable:' .. DoorWindowClosedCounterVar7] = tostring(0)
+        elseif deviceValue == "Closed" then
+            --if debug then print('Closed door/window detected') end
+            commandArray['Variable:' .. DoorWindowOpenCounterVar7] = tostring(0)
         end
     end
 end
