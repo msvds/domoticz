@@ -23,17 +23,19 @@ local switches = {
             'Lamp spoelb keuken',
             'Schemerlamp deur'
         },
-        timeout=20
+        timeout=30
     },
     Floor_1={
         detectors={
             'Beweging kamer Lars',
+            'Beweging hal boven',
             'Balkondeur slaapkamer',
             'Dakraam slaapkamer'
         },
         switches={
+            'Lamp hal boven'
         },
-        timeout=5
+        timeout=10
     },
     Floor_2={
         detectors={
@@ -42,7 +44,7 @@ local switches = {
         switches={
             'Lampen logeerkamer'
         },
-        timeout=5
+        timeout=10
     },
     Outside_rear={
         detectors={
